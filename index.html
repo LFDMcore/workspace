@@ -33,6 +33,12 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
+        .data-card img {
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-top: 1rem;
+            width: 100%;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -40,8 +46,7 @@
     <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Using a placeholder for the logo as the original link was broken -->
-            <img src="https://placehold.co/150x50/000000/FFFFFF?text=LFDM" alt="LFDM Logo" class="h-10">
+            <img src="https://storage.googleapis.com/context-ai-svc-gcs-prod-content-fetcher-public/uploaded:LFDM-LOGO.png-a4de1357-c161-48cf-9d72-e530911ecc8b" alt="LFDM Logo" class="h-12" onerror="this.onerror=null;this.src='https://placehold.co/150x50/000000/FFFFFF?text=LFDM';">
             <h1 class="text-xl md:text-2xl font-bold text-gray-700">Digital Opportunity Analysis</h1>
         </div>
     </header>
@@ -49,7 +54,7 @@
     <!-- Hero Section -->
     <section class="s-hero text-white py-24">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">A Partnership Proposal for Justin Steffins</h2>
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">A Partnership Proposal for Justin Steffens</h2>
             <p class="text-xl md:text-2xl font-light text-gray-200">Prepared by <span class="font-semibold">Cody & The LFDM Team</span></p>
         </div>
     </section>
@@ -73,15 +78,6 @@
             <h3 class="text-3xl font-bold mb-8 text-center text-gray-800">Business Intelligence Report: The Current Landscape</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                <!-- Helper function to create icon -->
-                <script>
-                    const createIcon = (iconName) => {
-                        const icon = document.createElement('i');
-                        icon.setAttribute('data-lucide', iconName);
-                        return icon;
-                    }
-                </script>
-
                 <!-- Domain Overview Card -->
                 <div class="bg-white p-6 rounded-xl shadow-lg data-card">
                     <div class="flex items-center text-blue-600 mb-4">
@@ -104,8 +100,7 @@
                         <h4 class="text-xl font-semibold text-gray-900">Organic Traffic Insights</h4>
                     </div>
                     <p class="text-gray-600 mb-4">While traffic is low, recent upward movement shows new potential.</p>
-                    <!-- Placeholder for graph -->
-                    <img src="https://placehold.co/600x400/E9F5FF/1E88E5?text=Organic+Traffic+Graph" alt="Organic Traffic Graph" class="rounded-lg shadow-md mt-4 w-full">
+                    <img src="https://storage.googleapis.com/context-ai-svc-gcs-prod-content-fetcher-public/uploaded:Screenshot%20(74).jpg-8fa63a91-777b-4ebf-bbe2-89ea1f38742a" alt="Organic Traffic Graph" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E9F5FF/1E88E5?text=Organic+Traffic+Graph';">
                 </div>
                 
                 <!-- Top Organic Keywords Card -->
@@ -115,8 +110,7 @@
                         <h4 class="text-xl font-semibold text-gray-900">Top Organic Keywords</h4>
                     </div>
                     <p class="text-gray-600 mb-4">A foundation exists, but we can target much more valuable keywords.</p>
-                    <!-- Placeholder for keywords list -->
-                    <img src="https://placehold.co/600x400/E9F5FF/1E88E5?text=Top+Keywords+List" alt="Top Organic Keywords" class="rounded-lg shadow-md mt-4 w-full">
+                    <img src="https://storage.googleapis.com/context-ai-svc-gcs-prod-content-fetcher-public/uploaded:Screenshot%20(75).png-a2c97697-0508-4971-9d6f-796146ba4574" alt="Top Organic Keywords" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E9F5FF/1E88E5?text=Top+Keywords+List';">
                 </div>
 
                 <!-- Keywords by Intent Card -->
@@ -126,8 +120,7 @@
                         <h4 class="text-xl font-semibold text-gray-900">Keyword Intent</h4>
                     </div>
                     <p class="text-gray-600 mb-4">A good mix, but we can heavily boost commercial keywords to drive sales.</p>
-                     <!-- Placeholder for intent graph -->
-                     <img src="https://placehold.co/600x400/E9F5FF/1E88E5?text=Keyword+Intent+Chart" alt="Keywords by Intent" class="rounded-lg shadow-md mt-4 w-full">
+                    <img src="https://storage.googleapis.com/context-ai-svc-gcs-prod-content-fetcher-public/uploaded:Screenshot%20(76).png-6d0509f7-4f38-4d88-96cf-88b095159027" alt="Keywords by Intent" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E9F5FF/1E88E5?text=Keyword+Intent+Chart';">
                 </div>
 
                 <!-- Competitor Analysis Card -->
@@ -137,8 +130,7 @@
                         <h4 class="text-xl font-semibold text-gray-900">Competitive Landscape</h4>
                     </div>
                     <p class="text-gray-600 mb-4">You have competitors, but there's a clear opportunity to outperform them.</p>
-                    <!-- Placeholder for competitive map -->
-                    <img src="https://placehold.co/600x400/E9F5FF/1E88E5?text=Competitive+Map" alt="Competitive Positioning Map" class="rounded-lg shadow-md mt-4 w-full">
+                    <img src="https://storage.googleapis.com/context-ai-svc-gcs-prod-content-fetcher-public/uploaded:Screenshot%20(77).png-a4ab238d-69f3-480f-9273-2c66166069fc" alt="Competitive Positioning Map" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E9F5FF/1E88E5?text=Competitive+Map';">
                 </div>
 
                 <!-- Backlink Profile Card -->
@@ -148,8 +140,7 @@
                         <h4 class="text-xl font-semibold text-gray-900">Backlink Profile</h4>
                     </div>
                     <p class="text-gray-600 mb-4">A good number of backlinks, but we can improve their quality and relevance.</p>
-                    <!-- Placeholder for backlink chart -->
-                    <img src="https://placehold.co/600x400/E9F5FF/1E88E5?text=Backlink+Profile" alt="Backlink Types" class="rounded-lg shadow-md mt-4 w-full">
+                    <img src="https://storage.googleapis.com/context-ai-svc-gcs-prod-content-fetcher-public/uploaded:Screenshot%20(79).jpg-dd275abd-ce75-4267-b01b-e889e34dbb17" alt="Backlink Types" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E9F5FF/1E88E5?text=Backlink+Profile';">
                 </div>
 
             </div>
