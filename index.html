@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Icon Library -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -28,15 +30,17 @@
         /* Custom card styling */
         .data-card {
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
         }
         .data-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
-        .data-card img {
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            margin-top: 1rem;
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 250px;
             width: 100%;
         }
     </style>
@@ -46,7 +50,7 @@
     <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <img src="https://storage.googleapis.com/context-ai-svc-gcs-prod-content-fetcher-public/uploaded:LFDM-LOGO.png-a4de1357-c161-48cf-9d72-e530911ecc8b" alt="LFDM Logo" class="h-12" onerror="this.onerror=null;this.src='https://placehold.co/150x50/000000/FFFFFF?text=LFDM';">
+            <img src="https://raw.githubusercontent.com/LFDMCore/workspace/main/images/lfdm-logo.png" alt="LFDM Logo" class="h-12">
             <h1 class="text-xl md:text-2xl font-bold text-gray-700">Digital Opportunity Analysis</h1>
         </div>
     </header>
@@ -81,15 +85,15 @@
                 <!-- Domain Overview Card -->
                 <div class="bg-white p-6 rounded-xl shadow-lg data-card">
                     <div class="flex items-center text-blue-600 mb-4">
-                        <i data-lucide="globe-2" class="w-8 h-8 mr-3"></i>
-                        <h4 class="text-xl font-semibold text-gray-900">Domain Overview</h4>
+                        <i data-lucide="gauge-circle" class="w-8 h-8 mr-3"></i>
+                        <h4 class="text-xl font-semibold text-gray-900">Key Metrics</h4>
                     </div>
-                    <p class="text-gray-600 mb-4">A snapshot of your current digital footprint.</p>
-                    <ul class="space-y-3 text-gray-700">
-                        <li class="flex items-center"><strong>Authority Score:</strong> <span class="ml-2 font-bold text-2xl text-red-500">6</span></li>
-                        <li class="flex items-center"><strong>Organic Search Traffic:</strong> <span class="ml-2 font-bold text-2xl text-red-500">3/mo</span></li>
-                        <li class="flex items-center"><strong>Backlinks:</strong> <span class="ml-2 font-bold text-2xl text-green-500">339</span></li>
-                        <li class="flex items-center"><strong>Referring Domains:</strong> <span class="ml-2 font-bold text-2xl text-green-500">98</span></li>
+                    <p class="text-gray-600 mb-4">A high-level snapshot of your current digital footprint.</p>
+                    <ul class="space-y-4 text-gray-700 mt-auto">
+                        <li class="flex justify-between items-baseline"><span>Authority Score:</span> <span class="font-bold text-2xl text-red-500">6</span></li>
+                        <li class="flex justify-between items-baseline"><span>Organic Traffic:</span> <span class="font-bold text-2xl text-red-500">3/mo</span></li>
+                        <li class="flex justify-between items-baseline"><span>Backlinks:</span> <span class="font-bold text-2xl text-green-500">339</span></li>
+                        <li class="flex justify-between items-baseline"><span>Referring Domains:</span> <span class="font-bold text-2xl text-green-500">98</span></li>
                     </ul>
                 </div>
 
@@ -99,50 +103,47 @@
                         <i data-lucide="line-chart" class="w-8 h-8 mr-3"></i>
                         <h4 class="text-xl font-semibold text-gray-900">Organic Traffic Insights</h4>
                     </div>
-                    <p class="text-gray-600 mb-4">While traffic is low, recent upward movement shows new potential.</p>
-                    <img src="https://storage.googleapis.com/context-ai-svc-gcs-prod-content-fetcher-public/uploaded:Screenshot%20(74).jpg-8fa63a91-777b-4ebf-bbe2-89ea1f38742a" alt="Organic Traffic Graph" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E9F5FF/1E88E5?text=Organic+Traffic+Graph';">
+                    <p class="text-gray-600 mb-4">Recent upward movement shows new potential.</p>
+                    <div class="chart-container mt-auto">
+                        <canvas id="organicTrafficChart"></canvas>
+                    </div>
                 </div>
                 
-                <!-- Top Organic Keywords Card -->
-                <div class="bg-white p-6 rounded-xl shadow-lg data-card">
-                    <div class="flex items-center text-blue-600 mb-4">
-                        <i data-lucide="key-round" class="w-8 h-8 mr-3"></i>
-                        <h4 class="text-xl font-semibold text-gray-900">Top Organic Keywords</h4>
-                    </div>
-                    <p class="text-gray-600 mb-4">A foundation exists, but we can target much more valuable keywords.</p>
-                    <img src="https://storage.googleapis.com/context-ai-svc-gcs-prod-content-fetcher-public/uploaded:Screenshot%20(75).png-a2c97697-0508-4971-9d6f-796146ba4574" alt="Top Organic Keywords" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E9F5FF/1E88E5?text=Top+Keywords+List';">
-                </div>
-
                 <!-- Keywords by Intent Card -->
                 <div class="bg-white p-6 rounded-xl shadow-lg data-card">
                      <div class="flex items-center text-blue-600 mb-4">
                         <i data-lucide="siren" class="w-8 h-8 mr-3"></i>
                         <h4 class="text-xl font-semibold text-gray-900">Keyword Intent</h4>
                     </div>
-                    <p class="text-gray-600 mb-4">A good mix, but we can heavily boost commercial keywords to drive sales.</p>
-                    <img src="https://storage.googleapis.com/context-ai-svc-gcs-prod-content-fetcher-public/uploaded:Screenshot%20(76).png-6d0509f7-4f38-4d88-96cf-88b095159027" alt="Keywords by Intent" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E9F5FF/1E88E5?text=Keyword+Intent+Chart';">
+                    <p class="text-gray-600 mb-4">High commercial intent is a strong foundation.</p>
+                    <div class="chart-container mt-auto">
+                        <canvas id="keywordIntentChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Branded vs Non-Branded -->
+                <div class="bg-white p-6 rounded-xl shadow-lg data-card">
+                     <div class="flex items-center text-blue-600 mb-4">
+                        <i data-lucide="shield-check" class="w-8 h-8 mr-3"></i>
+                        <h4 class="text-xl font-semibold text-gray-900">Branded Traffic</h4>
+                    </div>
+                    <p class="text-gray-600 mb-4">100% non-branded traffic shows a huge opportunity to build brand awareness.</p>
+                    <div class="chart-container mt-auto">
+                        <canvas id="brandedTrafficChart"></canvas>
+                    </div>
                 </div>
 
                 <!-- Competitor Analysis Card -->
-                <div class="bg-white p-6 rounded-xl shadow-lg data-card">
+                <div class="bg-white p-6 rounded-xl shadow-lg data-card lg:col-span-2">
                     <div class="flex items-center text-blue-600 mb-4">
                         <i data-lucide="swords" class="w-8 h-8 mr-3"></i>
                         <h4 class="text-xl font-semibold text-gray-900">Competitive Landscape</h4>
                     </div>
-                    <p class="text-gray-600 mb-4">You have competitors, but there's a clear opportunity to outperform them.</p>
-                    <img src="https://storage.googleapis.com/context-ai-svc-gcs-prod-content-fetcher-public/uploaded:Screenshot%20(77).png-a4ab238d-69f3-480f-9273-2c66166069fc" alt="Competitive Positioning Map" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E9F5FF/1E88E5?text=Competitive+Map';">
-                </div>
-
-                <!-- Backlink Profile Card -->
-                <div class="bg-white p-6 rounded-xl shadow-lg data-card">
-                    <div class="flex items-center text-blue-600 mb-4">
-                        <i data-lucide="link" class="w-8 h-8 mr-3"></i>
-                        <h4 class="text-xl font-semibold text-gray-900">Backlink Profile</h4>
+                    <p class="text-gray-600 mb-4">The competitive field is established but not unbeatable.</p>
+                    <div class="chart-container mt-auto">
+                        <canvas id="competitorChart"></canvas>
                     </div>
-                    <p class="text-gray-600 mb-4">A good number of backlinks, but we can improve their quality and relevance.</p>
-                    <img src="https://storage.googleapis.com/context-ai-svc-gcs-prod-content-fetcher-public/uploaded:Screenshot%20(79).jpg-dd275abd-ce75-4267-b01b-e889e34dbb17" alt="Backlink Types" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E9F5FF/1E88E5?text=Backlink+Profile';">
                 </div>
-
             </div>
         </section>
         
@@ -188,7 +189,6 @@
                 Let's Schedule a Chat
             </a>
         </section>
-
     </main>
 
     <!-- Footer -->
@@ -203,6 +203,119 @@
         // Initialize Lucide icons
         lucide.createIcons();
 
+        // Chart.js Configurations
+        document.addEventListener('DOMContentLoaded', () => {
+            const chartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#4b5563',
+                            font: {
+                                family: "'Inter', sans-serif"
+                            }
+                        }
+                    }
+                },
+                 animation: {
+                    duration: 1000,
+                    easing: 'easeInOutQuart'
+                }
+            };
+            
+            // 1. Organic Traffic Chart (Line)
+            new Chart(document.getElementById('organicTrafficChart'), {
+                type: 'line',
+                data: {
+                    labels: ['Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Organic Traffic',
+                        data: [0, 0, 1, 4, 7, 11, 3], // Data from screenshot
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: { ...chartOptions, scales: { y: { beginAtZero: true, suggestedMax: 15 } } }
+            });
+
+            // 2. Keyword Intent Chart (Doughnut)
+            new Chart(document.getElementById('keywordIntentChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Commercial', 'Navigational', 'Informational'],
+                    datasets: [{
+                        label: 'Keyword Intent',
+                        data: [65.5, 20.7, 13.8], // Data from screenshot
+                        backgroundColor: ['#10b981', '#3b82f6', '#f59e0b'],
+                        borderColor: '#ffffff',
+                        borderWidth: 2
+                    }]
+                },
+                options: chartOptions
+            });
+
+            // 3. Branded vs. Non-Branded Chart (Pie)
+            new Chart(document.getElementById('brandedTrafficChart'), {
+                type: 'pie',
+                data: {
+                    labels: ['Non-Branded', 'Branded'],
+                    datasets: [{
+                        label: 'Traffic Type',
+                        data: [100, 0], // Data from screenshot
+                        backgroundColor: ['#3b82f6', '#e5e7eb'],
+                        borderColor: '#ffffff',
+                        borderWidth: 2
+                    }]
+                },
+                options: chartOptions
+            });
+
+            // 4. Competitor Chart (Bubble)
+            new Chart(document.getElementById('competitorChart'), {
+                type: 'bubble',
+                data: {
+                    datasets: [
+                        {
+                            label: 'WorkspaceTeam.com',
+                            data: [{ x: 28, y: 3, r: 10 }], // x=Keywords, y=Traffic, r=size
+                            backgroundColor: '#ef4444'
+                        },
+                        {
+                            label: 'workspaceinc.net',
+                            data: [{ x: 125, y: 2, r: 20 }],
+                            backgroundColor: '#10b981'
+                        },
+                         {
+                            label: 'wsioffice.com',
+                            data: [{ x: 88, y: 2, r: 15 }],
+                            backgroundColor: '#f59e0b'
+                        },
+                        {
+                            label: 'tiffanysathome.com',
+                            data: [{ x: 50, y: 2, r: 12 }],
+                            backgroundColor: '#6366f1'
+                        },
+                         {
+                            label: 'workspacesantacruz.com',
+                            data: [{ x: 20, y: 1, r: 8 }],
+                            backgroundColor: '#8b5cf6'
+                        },
+                    ]
+                },
+                options: {
+                    ...chartOptions,
+                    scales: {
+                        x: { title: { display: true, text: 'Organic Keywords' } },
+                        y: { title: { display: true, text: 'Organic Search Traffic' } }
+                    }
+                }
+            });
+        });
+
         // Intersection Observer for fade-in animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -216,6 +329,5 @@
             observer.observe(section);
         });
     </script>
-
 </body>
 </html>
